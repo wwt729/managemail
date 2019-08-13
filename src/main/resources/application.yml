@@ -48,4 +48,4 @@ yuanbo:
     filterPath: "/**"
 logging:
   level:
-    com.yuanbo.managemail: debug
+    com.wwt.managemail: debug
