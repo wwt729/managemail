@@ -1,0 +1,51 @@
+
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url:  jdbc:mysql://localhsot:3306/test?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: root
+    password: root
+    hikari:
+      minimum-idle: 5
+      # 空闲连接存活最大时间，默认600000（10分钟）
+      idle-timeout: 180000
+      # 连接池最大连接数，默认是10
+      maximum-pool-size: 10
+      # 此属性控制从池返回的连接的默认自动提交行为,默认值：true
+      auto-commit: true
+      # 连接池名称
+      pool-name: MyHikariCP
+      # 此属性控制池中连接的最长生命周期，值0表示无限生命周期，默认1800000即30分钟
+      max-lifetime: 1800000
+      # 数据库连接超时时间,默认30秒，即30000
+      connection-timeout: 30000
+      connection-test-query: SELECT 1
+
+mybatis:
+  type-aliases-package: com.wwt.managemail.entity
+  configuration:
+    map-underscore-to-camel-case: true
+  mapper-locations: mappers/*Mapper.xml
+server:
+  port: 8086
+
+yuanbo:
+  cors:
+    allowedOrigins:
+      - http://localhost:8080
+    allowCredentials: true
+    allowedHeaders:
+      - "*"
+    allowedMethods:
+      - GET
+      - POST
+      - DELETE
+      - PUT
+      - OPTIONS
+      - HEAD
+    maxAge: 3600
+    filterPath: "/**"
+logging:
+  level:
+    com.yuanbo.managemail: debug
